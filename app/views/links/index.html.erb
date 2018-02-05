@@ -1,0 +1,40 @@
+
+<h1>ALL links available</h1>
+<br><br>
+<p>  
+	<div> 
+		<table style="width:100%, border-spacing: 5px;" >
+		<tr style= "text-align:left">
+		  <th>Name</th>
+		  <th>URL</th>
+		  <th>User</th>
+		  <th>Image</th>
+		</tr>
+		<% @links.each do |l| %>
+			  <tr>
+			    <td><%= l.name %></td>
+			    <td><%= l.url %></td>
+			    <td><%= l.user.email %></td>
+			    <td><%= image_tag l.image.url (:medium) %></td>
+			  </tr>
+			<!--
+			 <p> Link name - <%= l.name %> <br> 
+			    URL of the link- <%= l.url %><br><br>
+			-->
+			<tr style= "text-align:left">
+				<th>
+					    <%= link_to  "Read post" , link_path(l) %>
+					    <% if can? :update, l %>
+						    <%= link_to " Update Post ",link_edit_path(l) %>
+					 	<% end %>
+					 	<% if can? :destroy, l %>
+						    <%= link_to " Delete Post ",link_path(l),method: :delete, data: {confirm: "Are you sure?"} %>
+						<% end %>
+				</th>
+			</tr>
+		<%end %>
+		</table>	
+	</div>
+</p>
+<%= will_paginate @links, renderer:  WillPaginate::ActionView::LinkRenderer,  previous_label: "Older", next_label: "Newer", inner_window: 1, outer_window:1  %>
+<%= link_to 'New Link', "/new" %>

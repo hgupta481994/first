@@ -1,0 +1,11 @@
+<h1> Your Updated Post : </h1>
+ <div>
+ 	<%= image_tag @link.image.url (:thumb) %>
+ <h4>
+ Name of the link - <%= @link.name %>
+ </h4>
+ URL of the link- 	<%= @link.url %>
+
+ </div>
+
+ <p><%= link_to "Go to main page ", '/links' %></p>

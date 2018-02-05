@@ -1,0 +1,11 @@
+<%= form_for @link, html: { multipart: true } do |l| %>
+		<%= l.label :link_name %><br>
+		<%= l.text_field :name %> <br>
+		<br>
+		<%= l.label :url_of_the_link %><br>
+		<%= l.text_area :url %><br>
+		<br>
+		<%= l.label :upload_a_image %><br>
+		<%= l.file_field :image %><br>
+		<%= l.submit "Create/Edit" %>
+	 <% end %>

@@ -1,0 +1,8 @@
+user roles- admin and normal user  
+user can log in from username and email-id
+user can read all post and update, delete only his posts. 
+admin can delete any user                  
+{if user is deleted then his links also be deleted} 
+user can make new post giving name url and picture of a post
+pagination                                           
+

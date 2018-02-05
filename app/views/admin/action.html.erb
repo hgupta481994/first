@@ -1,0 +1,33 @@
+
+<h1>ALL Users</h1>
+<br><br>
+<p>  
+	<div> 
+		<table style="width:100%, border-spacing: 5px;" >
+		<tr style= "text-align:left">
+		  <th>Email-id</th>
+		  <th>Username</th>
+		</tr>
+		  <% if can? :read, @users  %>
+		 	<% @users.each do |u| %> 
+		 		<% if u.isadmin? == false %>
+				  <tr>
+				    <td><%= u.email %></td>
+				    <td><%= u.username %></td>
+				  </tr>
+				  <tr style= "text-align:left">
+				  	<% if can? :destroy, u  %>
+					<th>
+					<%= link_to " Delete User",delete_user_path(u),method: :delete, data: {confirm: "Are you sure?"} %>	    
+							   
+					</th>
+					<% end %>
+				  </tr>
+			  	<% end %>
+			<% end %>
+		   <% end %>
+		</table>	
+	</div>
+</p>
+
+<%= will_paginate @users, renderer:  WillPaginate::ActionView::LinkRenderer,  previous_label: "Older", next_label: "Newer", inner_window: 1, outer_window:1  %>
